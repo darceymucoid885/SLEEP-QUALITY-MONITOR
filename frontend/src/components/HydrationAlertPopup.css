@@ -1,0 +1,92 @@
+.hydration-popup-container {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background: rgba(10, 15, 30, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-radius: 20px;
+  padding: 20px 24px;
+  min-width: 380px;
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  z-index: 1000;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5), inset 0 1px 1px rgba(255,255,255,0.1);
+  transform: translateY(100px);
+  opacity: 0;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.hydration-popup-container.show {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.hydration-popup-container.mild {
+  border: 1px solid rgba(0, 242, 254, 0.4);
+}
+
+.hydration-popup-container.mild .popup-icon-wrapper {
+  background: rgba(0, 242, 254, 0.15);
+  box-shadow: 0 0 20px rgba(0, 242, 254, 0.2);
+}
+
+.hydration-popup-container.strong {
+  border: 1px solid rgba(255, 75, 75, 0.6);
+  animation: pulse-border 2s infinite alternate;
+}
+
+.hydration-popup-container.strong .popup-icon-wrapper {
+  background: rgba(255, 75, 75, 0.15);
+  box-shadow: 0 0 20px rgba(255, 75, 75, 0.4);
+}
+
+@keyframes pulse-border {
+  from { border-color: rgba(255, 75, 75, 0.4); box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5), 0 0 10px rgba(255, 75, 75, 0.1); }
+  to { border-color: rgba(255, 75, 75, 0.8); box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5), 0 0 30px rgba(255, 75, 75, 0.4); }
+}
+
+.popup-icon-wrapper {
+  border-radius: 50%;
+  padding: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.popup-content {
+  flex-grow: 1;
+}
+
+.popup-content h4 {
+  margin: 0 0 8px 0;
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.popup-content .message-body {
+  margin: 0;
+  color: #d1d5db;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.popup-close-btn {
+  background: transparent;
+  border: none;
+  color: #9ca3af;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2sease;
+}
+
+.popup-close-btn:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.1);
+}

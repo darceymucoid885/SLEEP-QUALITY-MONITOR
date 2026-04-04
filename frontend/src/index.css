@@ -1,0 +1,259 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+  --font-primary: 'Outfit', sans-serif;
+  --bg-color-1: #060b19;
+  --bg-color-2: #1a1025;
+  --text-primary: #ffffff;
+  --text-secondary: #a0aec0;
+  
+  --accent-cyan: #00f2fe;
+  --accent-purple: #4facfe;
+  --accent-success: #38b2ac;
+  --accent-warning: #ecc94b;
+  --accent-danger: #f56565;
+  
+  --glass-bg: rgba(255, 255, 255, 0.05);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-primary);
+  background: linear-gradient(135deg, var(--bg-color-1) 0%, var(--bg-color-2) 100%);
+  color: var(--text-primary);
+  min-height: 100vh;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ─── Constellation Background ─── */
+#constellation-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* ─── Typography & Shared Utilities ─── */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.text-gradient {
+  background: linear-gradient(to right, var(--accent-cyan), var(--accent-purple));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ─── Glassmorphism Components ─── */
+.glass-panel {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  box-shadow: var(--glass-shadow);
+  padding: 24px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.glass-panel:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.45);
+}
+
+/* ─── Buttons ─── */
+.btn-primary {
+  background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
+  color: #fff;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 12px;
+  font-family: var(--font-primary);
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: opacity 0.2s, transform 0.2s;
+  width: 100%;
+}
+
+.btn-primary:hover {
+  opacity: 0.9;
+  transform: scale(1.02);
+}
+
+.btn-primary:active {
+  transform: scale(0.98);
+}
+
+/* ─── Forms ─── */
+.input-group {
+  margin-bottom: 20px;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.glass-input {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 12px 16px;
+  border-radius: 12px;
+  color: white;
+  font-family: var(--font-primary);
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.3s ease, background 0.3s ease;
+}
+
+.glass-input:focus {
+  border-color: var(--accent-cyan);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* ─── Layouts ─── */
+.layout-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+@media (max-width: 900px) {
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ─── Timeline Chart Basics ─── */
+.timeline-container {
+  display: flex;
+  height: 200px;
+  align-items: flex-end;
+  gap: 2px;
+  margin-top: 20px;
+}
+
+.timeline-bar {
+  flex: 1;
+  border-radius: 4px 4px 0 0;
+  min-width: 4px;
+  transition: height 0.3s ease;
+  position: relative;
+}
+
+.timeline-bar:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.8);
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  white-space: nowrap;
+  z-index: 10;
+}
+
+/* Stage Colors */
+.stage-AWAKE { background-color: var(--accent-danger); height: 100%; }
+.stage-REM { background-color: var(--accent-cyan); height: 80%; }
+.stage-N1 { background-color: #718096; height: 60%; }
+.stage-N2 { background-color: #4299e1; height: 40%; }
+.stage-N3 { background-color: #3182ce; height: 20%; }
+
+/* ─── Badges ─── */
+.status-badge {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+.status-GOOD { background: rgba(56, 178, 172, 0.2); color: var(--accent-success); border: 1px solid var(--accent-success); }
+.status-MODERATE { background: rgba(236, 201, 75, 0.2); color: var(--accent-warning); border: 1px solid var(--accent-warning); }
+.status-POOR { background: rgba(245, 101, 101, 0.2); color: var(--accent-danger); border: 1px solid var(--accent-danger); }
+.status-NORMAL { background: rgba(56, 178, 172, 0.2); color: var(--accent-success); border: 1px solid var(--accent-success); }
+.status-MILD_DEHYDRATION { background: rgba(236, 201, 75, 0.2); color: var(--accent-warning); border: 1px solid var(--accent-warning); }
+.status-SEVERE_DEHYDRATION { background: rgba(245, 101, 101, 0.2); color: var(--accent-danger); border: 1px solid var(--accent-danger); }
+
+/* ─── Circular Progress ─── */
+.circle-progress-wrapper {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  margin: 0 auto;
+}
+
+.circle-svg {
+  transform: rotate(-90deg);
+  width: 100%;
+  height: 100%;
+}
+
+.circle-bg {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.1);
+  stroke-width: 12;
+}
+
+.circle-bar {
+  fill: none;
+  stroke: url(#gradient);
+  stroke-width: 12;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 1.5s ease-out;
+}
+
+.circle-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+.circle-text .score {
+  font-size: 3rem;
+  font-weight: 800;
+  line-height: 1;
+  background: linear-gradient(to right, var(--accent-cyan), var(--accent-purple));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.circle-text .label {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-top: 4px;
+}
